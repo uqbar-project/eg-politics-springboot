@@ -27,9 +27,11 @@ class CandidatoController {
 	def actualizarCandidato(@RequestBody Candidato candidatoNuevo, @PathVariable Long id) {
 
 		candidatoRepository.findById(id).map([ candidato |
-			// solo modificamos lo que está disponible para cambiar en la aplicación
-			candidato.promesas = candidatoNuevo.promesas
-			candidato.votos = candidatoNuevo.votos
+			candidato => [
+				// solo modificamos lo que está disponible para cambiar en la aplicación
+				promesas = candidatoNuevo.promesas
+				votos = candidatoNuevo.votos
+			]
 			//
 			candidatoRepository.save(candidato)
 		])
