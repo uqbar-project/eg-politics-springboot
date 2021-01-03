@@ -160,14 +160,14 @@ class PoliticsBootstrap implements InitializingBean {
 	}
 
 	def crearZona(Zona zona) {
-		val listaZonas = repoZonas.findByDescripcion(zona.descripcion)
+		val listaZonas = repoZonas.searchByExample(zona)
 		if (listaZonas.isEmpty) {
-			repoZonas.save(zona)
+			repoZonas.create(zona)
 			println("Zona " + zona.descripcion + " creada")
 		} else {
 			val zonaBD = listaZonas.head
 			zona.id = zonaBD.id
-			repoZonas.save(zona)
+			repoZonas.update(zona)
 		}
 	}
 

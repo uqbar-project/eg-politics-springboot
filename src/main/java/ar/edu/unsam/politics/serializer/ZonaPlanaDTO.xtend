@@ -7,14 +7,14 @@ import org.eclipse.xtend.lib.annotations.Accessors
 class ZonaPlanaDTO {
 	
 	Long id
-	String nombre
+	String descripcion
 
 	private new() {}
 	
 	def static fromZona(Zona zona) {
 		new ZonaPlanaDTO => [
 			id = zona.id
-			nombre = zona.descripcion
+			descripcion = zona.descripcion
 		]
 	}
 
