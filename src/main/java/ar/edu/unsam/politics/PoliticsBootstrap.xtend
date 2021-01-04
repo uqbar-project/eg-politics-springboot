@@ -160,15 +160,15 @@ class PoliticsBootstrap implements InitializingBean {
 	}
 
 	def crearZona(Zona zona) {
-		val listaZonas = repoZonas.searchByExample(zona)
-		if (listaZonas.isEmpty) {
+		val result = repoZonas.findByDescripcion(zona.descripcion)
+		result.ifPresentOrElse([ zonaBD | 
+				zona.id = zonaBD.id
+				repoZonas.update(zona)
+				println("Zona " + zona.descripcion + " actualizada")
+		], [
 			repoZonas.create(zona)
 			println("Zona " + zona.descripcion + " creada")
-		} else {
-			val zonaBD = listaZonas.head
-			zona.id = zonaBD.id
-			repoZonas.update(zona)
-		}
+		])
 	}
 
 	override afterPropertiesSet() throws Exception {
