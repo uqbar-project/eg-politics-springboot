@@ -30,7 +30,6 @@ class ZonaController {
   
 	@GetMapping(value="/zonas/{id}")
   def getZona(@PathVariable Long id) {
-  	val mapper = new ObjectMapper()
   	mapper.registerModule(
 			new SimpleModule().addSerializer(new ZonaParaGrillaSerializer)
 		)
