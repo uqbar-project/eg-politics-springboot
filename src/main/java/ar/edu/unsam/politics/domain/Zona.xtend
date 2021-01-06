@@ -1,7 +1,6 @@
 package ar.edu.unsam.politics.domain
 
 import ar.edu.unsam.politics.UserException
-//import com.fasterxml.jackson.databind.annotation.JsonSerialize
 import java.util.HashSet
 import java.util.Set
 import javax.persistence.Column
@@ -11,6 +10,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.OneToMany
 import org.eclipse.xtend.lib.annotations.Accessors
+
 //import ar.edu.unsam.politics.serializer.ZonaParaGrillaSerializer
 
 @Entity

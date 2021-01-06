@@ -20,9 +20,9 @@ class CandidatoController {
 	@Autowired
 	CandidatoRepository candidatoRepository
 
-	@GetMapping("/candidatos")
-	def getCandidatos() {
-		this.candidatoRepository.findAll()
+	@GetMapping("/candidatos/{id}")
+	def getCandidato(@PathVariable Long id) {
+		this.candidatoRepository.findById(id)
 	}
 
 	@PutMapping("/candidatos/{id}")
