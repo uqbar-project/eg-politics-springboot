@@ -31,7 +31,7 @@ class CandidatoController {
 		candidatoRepository.findById(id).map([ candidato |
 			candidato => [
 				// solo modificamos lo que está disponible para cambiar en la aplicación
-				promesas = candidatoNuevo.promesas
+				promesas = candidatoNuevo.promesas ?: promesas
 				votos = candidatoNuevo.votos
 			]
 			//
