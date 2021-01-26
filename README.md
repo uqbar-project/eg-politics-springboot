@@ -1,15 +1,8 @@
-# Primer ejemplo Servicio REST: Saludo con Springboot
+# Ejemplo Politics
 
-[![Build Status](https://travis-ci.com/algo3-unsam/tp-recetas-2020-gr-XX.svg?branch=master)](https://travis-ci.com/algo3-unsam/tp-recetas-2020-gr-XX)
+[![Build Status](https://travis-ci.com/uqbar-project/eg-politics-springboot.svg?branch=master)](https://travis-ci.com/uqbar-project/eg-politics-springboot)
 
-## Cosas a hablar
+## Material relacionado
 
-
-### Lazyness
-
-Failed to lazily initialize a collection of role... porque cambiamos el openInView. Las estrategias son
-
-- armar un DTO a mano: es lo que hacemos cuando buscamos las zonas
-- definir un serializer: para traer una zona seleccionada con candidatos y el partido, como alternativa tenemos una configuración default para la zona pero eso afecta a todos los queries.
-- armar un @EntityGraph, que trae automáticamente todos los campos lazy y permite que el serializador default de Spring Boot no reviente.
-
+- En el branch `master` está la versión que recomendamos usar para resolver el TP, en el branch `entity-manager` está la versión menos declarativa que usa el Entity Manager como representación de los queries a la base
+- [Apunte con la explicación completa](https://docs.google.com/document/d/13vAmPKbWfWpRWze3AhLwnCHfWktfIIXnju3PD_tzyW4/edit)
