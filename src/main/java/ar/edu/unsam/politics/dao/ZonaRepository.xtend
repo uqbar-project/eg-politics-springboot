@@ -9,8 +9,6 @@ import org.springframework.data.repository.CrudRepository
 interface ZonaRepository extends CrudRepository<Zona, Long> {
 	def List<Zona> findByDescripcion(String descripcion)
 
-	override List<Zona> findAll()
-
 	@EntityGraph(attributePaths=#[
 		"candidatos.promesas", 
 		"candidatos.partido",
