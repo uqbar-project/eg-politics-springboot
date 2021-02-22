@@ -19,10 +19,10 @@ class ZonaParaGrillaSerializer extends StdSerializer<Zona> {
 				writeNumberField("id", zona.id)
 			}
 			writeStringField("descripcion", zona.descripcion)
-			val candidatosDTO = zona.candidatos.map [ candidato |
+			val candidatosDTO = zona.getCandidates.map [ candidato |
 				CandidatoPlanoDTO.fromCandidato(candidato)
 			]
-			writeObjectField("candidatos", candidatosDTO.toList)
+			writeObjectField("candidates", candidatosDTO.toList)
 			writeEndObject
 		]
 	}

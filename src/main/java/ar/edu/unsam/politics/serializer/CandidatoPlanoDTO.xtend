@@ -1,7 +1,7 @@
 package ar.edu.unsam.politics.serializer
 
-import ar.edu.unsam.politics.domain.Candidato
 import org.eclipse.xtend.lib.annotations.Accessors
+import ar.edu.unsam.politics.domain.Candidate
 
 @Accessors
 class CandidatoPlanoDTO {
@@ -11,7 +11,7 @@ class CandidatoPlanoDTO {
 	
 	private new() {}
 	
-	def static fromCandidato(Candidato candidato) {
+	def static fromCandidato(Candidate candidato) {
 		new CandidatoPlanoDTO() => [
 			partido = candidato.partido.nombre
 			nombre = candidato.nombre

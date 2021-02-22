@@ -1,14 +1,14 @@
 package ar.edu.unsam.politics.dao
 
-import ar.edu.unsam.politics.domain.Candidato
 import java.util.Optional
 import org.springframework.data.jpa.repository.EntityGraph
 import org.springframework.data.repository.CrudRepository
+import ar.edu.unsam.politics.domain.Candidate
 
-interface CandidatoRepository extends CrudRepository<Candidato, Long> {
+interface CandidateRepository extends CrudRepository<Candidate, Long> {
 
-	def Candidato findByNombre(String nombre)
+	def Candidate findByNombre(String nombre)
 
 	@EntityGraph(attributePaths = #["partido", "promesas", "opiniones"])
-	override Optional<Candidato> findById(Long id)
+	override Optional<Candidate> findById(Long id)
 }

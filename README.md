@@ -29,3 +29,15 @@ Para conseguir el mismo efecto en tu proyecto solo tenés que agregar dos depend
   <version>3.0.0</version>
 </dependency>
 ```
+
+Luego en los controllers la annotation `@ApiOperation` es la que permite agregar una descripción al endpoint
+
+```xtend
+@GetMapping(value="/zonas/{id}")
+@ApiOperation("Permite traer la información de una zona, con las personas candidatas y las intenciones de voto incluidas.")
+def getZona(@PathVariable Long id) {
+```
+
+que luego tomará Swagger para publicar en la página.
+
+![swagger](./images/swagger.png)

@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 class PoliticsApplication {
 	
 	def static void main(String[] args) {
-		SpringApplication.run(PoliticsApplication, args)
+			SpringApplication.run(PoliticsApplication, args)
 	}
 
 }

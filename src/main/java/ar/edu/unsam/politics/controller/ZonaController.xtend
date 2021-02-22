@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.databind.module.SimpleModule
+import io.swagger.annotations.ApiOperation
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.CrossOrigin
@@ -24,11 +25,13 @@ class ZonaController {
 	ZonaRepository zonaRepository
 	
 	@GetMapping(value = "/zonas")
+	@ApiOperation("Trae la información de las zonas (sin sus relaciones, pensado para una selección inicial).")
 	def getZonas() {
-		this.zonaRepository.findAll().map [ ZonaPlanaDTO.fromZona(it) ]
+		this.zonaRepository.findAll().toList.map [ ZonaPlanaDTO.fromZona(it) ]
 	}
   
 	@GetMapping(value="/zonas/{id}")
+	@ApiOperation("Permite traer la información de una zona, con las personas candidatas y las intenciones de voto incluidas.")
   def getZona(@PathVariable Long id) {
   	mapper.registerModule(
 			new SimpleModule().addSerializer(new ZonaParaGrillaSerializer)

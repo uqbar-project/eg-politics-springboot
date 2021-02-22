@@ -27,13 +27,13 @@ class Zona {
 	String descripcion
 
 	@OneToMany(fetch=FetchType.LAZY)
-	Set<Candidato> candidatos = new HashSet
+	Set<Candidate> candidates = new HashSet
 
 	def void validar() {
 		if (descripcion === null) {
 			throw new UserException("Debe ingresar descripcion")
 		}
-		if (candidatos.isEmpty) {
+		if (candidates.isEmpty) {
 			throw new UserException("Debe haber al menos un candidato en la zona")
 		}
 	}
@@ -42,17 +42,4 @@ class Zona {
 		descripcion
 	}
 
-//	override equals(Object obj) {
-//		try {
-//			val other = obj as Zona
-//			id == other?.id
-//		} catch (ClassCastException e) {
-//			return false
-//		}
-//	}
-//
-//	override hashCode() {
-//		if (id !== null) id.hashCode else super.hashCode
-//	}
-	
 }

@@ -16,7 +16,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 
 @Entity
 @Accessors
-class Candidato {
+class Candidate {
 	
 	@Id @GeneratedValue
 	Long id

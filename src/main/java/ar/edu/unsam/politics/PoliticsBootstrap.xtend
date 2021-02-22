@@ -1,9 +1,7 @@
 package ar.edu.unsam.politics
 
-import ar.edu.unsam.politics.dao.CandidatoRepository
 import ar.edu.unsam.politics.dao.PartidoRepository
 import ar.edu.unsam.politics.dao.ZonaRepository
-import ar.edu.unsam.politics.domain.Candidato
 import ar.edu.unsam.politics.domain.Partido
 import ar.edu.unsam.politics.domain.Peronista
 import ar.edu.unsam.politics.domain.Preservativo
@@ -13,6 +11,8 @@ import java.time.LocalDate
 import org.springframework.beans.factory.InitializingBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import ar.edu.unsam.politics.dao.CandidateRepository
+import ar.edu.unsam.politics.domain.Candidate
 
 /**
  * 
@@ -29,19 +29,19 @@ class PoliticsBootstrap implements InitializingBean {
 	PartidoRepository repoPartidos
 	
 	@Autowired
-	CandidatoRepository repoCandidatos
+	CandidateRepository repoCandidatos
 	
 	Partido frejuli
 	Partido perone
 	Partido prime
 
-	Candidato sosa
-	Candidato benitez
-	Candidato yapura
-	Candidato ramos
-	Candidato monti
-	Candidato rota
-	Candidato cafrune
+	Candidate sosa
+	Candidate benitez
+	Candidate yapura
+	Candidate ramos
+	Candidate monti
+	Candidate rota
+	Candidate cafrune
 
 	Zona nacional
 	Zona springfield
@@ -82,38 +82,38 @@ class PoliticsBootstrap implements InitializingBean {
 	}
 
 	def void initCandidatos() {
-		sosa = new Candidato() =>
+		sosa = new Candidate() =>
 			[
 				nombre = "Julio Sosa"
 				partido = frejuli
 				promesas = newArrayList(new Promesa("Terminar con la inseguridad"),
 					new Promesa("Aborto para unos, banderitas para otros"))
 			]
-		benitez = new Candidato() => [
+		benitez = new Candidate() => [
 			nombre = "Myriam Benitez"
 			partido = frejuli
 			promesas = newArrayList(new Promesa("Girar y girar hacia la libertad"))
 		]
-		yapura = new Candidato() =>
+		yapura = new Candidate() =>
 			[
 				nombre = "Marcelo Yapura"
 				partido = frejuli
 				promesas = newArrayList(new Promesa("Terminar con la pobreza"),
 					new Promesa("Que todos los docentes de la UTN cobren en euros"))
 			]
-		ramos = new Candidato() =>
+		ramos = new Candidate() =>
 			[
 				nombre = "Manuel Ramos"
 				partido = perone
 				promesas = newArrayList(new Promesa("Terminar con la inseguridad"),
 					new Promesa("Recuperar la confianza de los argentinos"))
 			]
-		monti = new Candidato() => [
+		monti = new Candidate() => [
 			nombre = "Yaco Monti"
 			partido = perone
 			promesas = newArrayList(new Promesa("Terminar con la inseguridad"), new Promesa("Recuperar la dignidad"))
 		]
-		rota = new Candidato() =>
+		rota = new Candidate() =>
 			[
 				nombre = "Nino Rota"
 				partido = prime
@@ -121,7 +121,7 @@ class PoliticsBootstrap implements InitializingBean {
 					new Promesa("Sacar el cepo a la moneda extranjera"),
 					new Promesa("Eliminar el impuesto a las ganancias"))
 			]
-		cafrune = new Candidato() =>
+		cafrune = new Candidate() =>
 			[
 				nombre = "Yamila Cafrune"
 				partido = prime
@@ -137,7 +137,7 @@ class PoliticsBootstrap implements InitializingBean {
 		this.crearCandidato(cafrune)
 	}
 
-	def crearCandidato(Candidato candidato) {
+	def crearCandidato(Candidate candidato) {
 		val candidatoEnElRepo = repoCandidatos.findByNombre(candidato.nombre)
 		if (candidatoEnElRepo !== null) {
 			candidato.id = candidatoEnElRepo.id
@@ -149,11 +149,11 @@ class PoliticsBootstrap implements InitializingBean {
 	def initZonas() {
 		nacional = new Zona => [
 			descripcion = "Elecciones nacionales"
-			candidatos = newHashSet(sosa, benitez, ramos, rota)
+			setCandidates = newHashSet(sosa, benitez, ramos, rota)
 		]
 		springfield = new Zona => [
 			descripcion = "Springfield"
-			candidatos = newHashSet(yapura, monti, cafrune)
+			setCandidates = newHashSet(yapura, monti, cafrune)
 		]
 		this.crearZona(nacional)
 		this.crearZona(springfield)

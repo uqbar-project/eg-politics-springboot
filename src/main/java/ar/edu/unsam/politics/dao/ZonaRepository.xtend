@@ -10,9 +10,9 @@ interface ZonaRepository extends CrudRepository<Zona, Long> {
 	def List<Zona> findByDescripcion(String descripcion)
 
 	@EntityGraph(attributePaths=#[
-		"candidatos.promesas", 
-		"candidatos.partido",
-		"candidatos.opiniones"
+		"candidates.promesas", 
+		"candidates.partido",
+		"candidates.opiniones"
 	])
 	override Optional<Zona> findById(Long id)
 
