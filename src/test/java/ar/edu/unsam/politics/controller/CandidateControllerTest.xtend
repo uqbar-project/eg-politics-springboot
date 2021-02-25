@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-@DisplayName("Dado un controller de zonas")
+@DisplayName("Dado un controller de candidates")
 class CandidateControllerTest {
 
     @Autowired
