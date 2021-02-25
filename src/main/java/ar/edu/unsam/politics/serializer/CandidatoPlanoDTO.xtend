@@ -5,6 +5,7 @@ import ar.edu.unsam.politics.domain.Candidate
 
 @Accessors
 class CandidatoPlanoDTO {
+	Long id
 	String partido
 	String nombre
 	int votos
@@ -13,10 +14,11 @@ class CandidatoPlanoDTO {
 	
 	def static fromCandidato(Candidate candidato) {
 		new CandidatoPlanoDTO() => [
+			id = candidato.id
 			partido = candidato.partido.nombre
 			nombre = candidato.nombre
 			votos = candidato.votos
-		]	
+		]
 	}
 	
 }

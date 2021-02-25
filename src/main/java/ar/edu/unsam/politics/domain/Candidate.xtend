@@ -17,26 +17,26 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Entity
 @Accessors
 class Candidate {
-	
+
 	@Id @GeneratedValue
 	Long id
-	
+
 	@Column(length=150)
 	String nombre
-	
+
 	@ManyToOne
 	Partido partido
 
 	int votos = 0
-		
+
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@OrderColumn
-	List<Promesa> promesas = newArrayList 
-	
+	List<Promesa> promesas = newArrayList
+
 	@ElementCollection
 	@OrderColumn
 	List<String> opiniones = newArrayList
-	
+
 	def void validar() {
 		if (nombre === null) {
 			throw new UserException("Debe ingresar descripcion")
@@ -45,17 +45,26 @@ class Candidate {
 			throw new UserException("El candidato debe estar participando en un partido político")
 		}
 	}
-	
+
 	override toString() {
 		nombre
 	}
-	
+
 	def agregarPromesa(String nuevaPromesa) {
 		promesas.add(new Promesa(nuevaPromesa))
 	}
-	
+
 	def agregarOpinion(String opinion) {
 		opiniones.add(opinion)
+	}
+
+	def votar() {
+		votos++
+	}
+
+	def reset() {
+		promesas = newArrayList
+		opiniones = newArrayList
 	}
 
 }
