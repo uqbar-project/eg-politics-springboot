@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
+import org.springframework.test.annotation.DirtiesContext
+import org.springframework.test.annotation.DirtiesContext.ClassMode
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
@@ -28,6 +30,10 @@ class CandidateControllerTest {
 
     val CANDIDATE_NOMBRE = "Julio Sosa"
 
+		// anotamos este test con @DirtiesContext ya que queremos evitar
+		// que el efecto colateral se propague (al siguiente test
+		// o a la próxima ejecución de este mismo test)
+		@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
     @Test
     @DisplayName("podemos actualizar la información de una persona candidata")
     def void actualizarProfesor() {
@@ -44,10 +50,6 @@ class CandidateControllerTest {
 				
 				val candidateActualizado = repoCandidates.findByNombre(CANDIDATE_NOMBRE)
         assertEquals(1, candidateActualizado.votos)
-        
-        // Pero ojo, como esto tiene efecto colateral, vamos a volver atrás el cambio
-        candidate.votos = 0
-        repoCandidates.save(candidate)
     }
 
 }

@@ -69,7 +69,7 @@ class ZonaControllerTest {
 
     @Test
     @DisplayName("no podemos traer información de una zona inexistente")
-    def profesorInexistente() {
+    def zonaInexistente() {
         val responseEntity = mockMvc.perform(MockMvcRequestBuilders.get("/profesores/100")).andReturn().response
         assertEquals(404, responseEntity.status)
     }
