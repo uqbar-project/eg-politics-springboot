@@ -63,7 +63,7 @@ class ZonaControllerTest {
         val ID_ZONA = zonas.head.id
         val responseEntity = mockMvc.perform(MockMvcRequestBuilders.get('''/zonas/«ID_ZONA»''')).andReturn().response
         assertEquals(200, responseEntity.status)
-        val zona = fromJson(responseEntity.contentAsString, ZonaGrillaDTO)
+        val zona = fromJson(responseEntity.contentAsString, Zona)
         assertFalse(zona.candidates.isEmpty(), "La zona debería tener candidates")
     }
 
