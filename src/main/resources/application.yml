@@ -3,7 +3,7 @@ spring:
     datasource:
         url: jdbc:mysql://localhost/politics
         username: root
-        password: 
+        password: root
         driver-class-name: com.mysql.cj.jdbc.Driver
 
     jpa:
@@ -12,3 +12,11 @@ spring:
         hibernate:
             format_sql: true
             ddl-auto: create-drop
+
+
+flyway:
+   url: jdbc:mysql://localhost/politics
+   schemas: politics
+   user: root
+   password: root
+   locations: classpath:dbasdasd/migration
