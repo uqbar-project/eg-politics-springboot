@@ -13,20 +13,26 @@ import javax.persistence.ManyToOne
 import javax.persistence.OneToMany
 import javax.persistence.OrderColumn
 import org.eclipse.xtend.lib.annotations.Accessors
+import com.fasterxml.jackson.annotation.JsonView
+import ar.edu.unsam.politics.serializer.View
 
 @Entity
 @Accessors
 class Candidate {
 
 	@Id @GeneratedValue
+	@JsonView(View.Zona.Grilla)
 	Long id
 
 	@Column(length=150)
+	@JsonView(View.Zona.Grilla)
 	String nombre
 
 	@ManyToOne
+	@JsonView(View.Zona.Grilla)
 	Partido partido
 
+	@JsonView(View.Zona.Grilla)
 	int votos = 0
 
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
