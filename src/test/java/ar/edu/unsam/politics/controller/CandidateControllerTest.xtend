@@ -7,11 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
-import org.springframework.test.annotation.DirtiesContext
-import org.springframework.test.annotation.DirtiesContext.ClassMode
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+import org.springframework.transaction.annotation.Transactional
 
 import static ar.edu.unsam.politics.controller.TestHelpers.*
 import static org.junit.jupiter.api.Assertions.assertEquals
@@ -30,10 +29,10 @@ class CandidateControllerTest {
 
     val CANDIDATE_NOMBRE = "Julio Sosa"
 
-		// anotamos este test con @DirtiesContext ya que queremos evitar
+		// anotamos este test con @Transactional ya que queremos evitar
 		// que el efecto colateral se propague (al siguiente test
 		// o a la próxima ejecución de este mismo test)
-		@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
+		@Transactional
     @Test
     @DisplayName("podemos actualizar la información de una persona candidata")
     def void actualizarProfesor() {
