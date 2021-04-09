@@ -26,6 +26,7 @@
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.eclipse.xtend</groupId>
 			<artifactId>org.eclipse.xtend.lib</artifactId>
@@ -128,6 +129,14 @@
 			<plugin>
 				<groupId>org.flywaydb</groupId>
 				<artifactId>flyway-maven-plugin</artifactId>
+				<configuration>
+					<user>root</user>
+					<password>root</password>
+					<url>jdbc:mysql://localhost/</url>
+					<schemas>
+						<schema>politics</schema>
+					</schemas>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
