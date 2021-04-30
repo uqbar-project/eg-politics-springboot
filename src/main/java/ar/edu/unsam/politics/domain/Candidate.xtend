@@ -1,6 +1,8 @@
 package ar.edu.unsam.politics.domain
 
-import ar.edu.unsam.politics.UserException
+import ar.edu.unsam.politics.errorHandling.UserException
+import ar.edu.unsam.politics.serializer.View
+import com.fasterxml.jackson.annotation.JsonView
 import java.util.List
 import javax.persistence.CascadeType
 import javax.persistence.Column
@@ -13,8 +15,6 @@ import javax.persistence.ManyToOne
 import javax.persistence.OneToMany
 import javax.persistence.OrderColumn
 import org.eclipse.xtend.lib.annotations.Accessors
-import com.fasterxml.jackson.annotation.JsonView
-import ar.edu.unsam.politics.serializer.View
 
 @Entity
 @Accessors
@@ -60,8 +60,16 @@ class Candidate {
 		promesas.add(new Promesa(nuevaPromesa))
 	}
 
+	def tienePromesas() {
+		!promesas.isEmpty
+	}
+
 	def agregarOpinion(String opinion) {
 		opiniones.add(opinion)
+	}
+
+	def tieneVotos() {
+		votos > 0
 	}
 
 	def votar() {
@@ -72,5 +80,5 @@ class Candidate {
 		promesas = newArrayList
 		opiniones = newArrayList
 	}
-
+	
 }

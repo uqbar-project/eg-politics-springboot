@@ -1,6 +1,6 @@
 package ar.edu.unsam.politics.domain
 
-import ar.edu.unsam.politics.UserException
+import ar.edu.unsam.politics.errorHandling.UserException
 import ar.edu.unsam.politics.serializer.View
 import com.fasterxml.jackson.annotation.JsonView
 import java.util.HashSet

@@ -1,6 +1,6 @@
 package ar.edu.unsam.politics.domain
 
-import ar.edu.unsam.politics.UserException
+import ar.edu.unsam.politics.errorHandling.UserException
 import java.time.LocalDate
 import javax.persistence.Column
 import javax.persistence.Entity

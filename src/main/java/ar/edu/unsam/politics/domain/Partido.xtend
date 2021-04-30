@@ -1,6 +1,6 @@
 package ar.edu.unsam.politics.domain
 
-import ar.edu.unsam.politics.UserException
+import ar.edu.unsam.politics.errorHandling.UserException
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import com.fasterxml.jackson.annotation.JsonTypeInfo
 import java.time.LocalDate
